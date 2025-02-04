@@ -4,9 +4,21 @@ add_executable(Amethysis WIN32)
 luastg_target_common_options(Amethysis)
 luastg_target_more_warning(Amethysis)
 
-set(AMETHYSIS_SRC
-    Main.cpp
+target_precompile_headers(
+        Amethysis
+        PRIVATE
+        SharedHeaders.hpp
 )
+
+set(AMETHYSIS_SRC
+        SharedHeaders.hpp
+        Main.cpp
+)
+
+# 添加子模块
+add_subdirectory(Core)
+add_subdirectory(Platform)
+add_subdirectory(Utility)
 
 # 子模块目录列表
 
