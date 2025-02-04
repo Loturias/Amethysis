@@ -23,6 +23,9 @@ namespace Amethysis::Core::App {
 
 		///@brief 帧计数器
 		ULONG FrameCounter = 0;
+		bool isRunning = false;
+
+		bool IsRunning() const { return isRunning; }
 
 		/// IWindow接口
 		void onWindowCreate(HINSTANCE hInstance) override;

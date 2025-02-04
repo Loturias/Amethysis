@@ -10,7 +10,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_CREATE:
 		break;
 	case WM_DESTROY:
-		Amethysis::Core::App::Application::getInstance().onWindowDestroy();
+		Amethysis::Core::App::Application::getInstance().isRunning = false;
 		PostQuitMessage(0);
 		break;
 	case WM_SIZE: // NOLINT(*-branch-clone)
@@ -64,6 +64,7 @@ namespace Amethysis::Core::App {
 		setHeight(1080);
 
 		setStatus(Platform::Windows::WindowStatus::CREATED);
+		this->isRunning = true;
 	}
 
 	void Application::onWindowUpdate()
@@ -80,31 +81,31 @@ namespace Amethysis::Core::App {
 	{
 		DestroyWindow(getHWnd());
 		setStatus(Platform::Windows::WindowStatus::DESTROYED);
-		spdlog::info(L"窗体已销毁。");
+		spdlog::info("Window Destroyed.");
 	}
 
 	void Application::onWindowResize(const int width, const int height)
 	{
 		//@TODO 接入窗口大小调整事件
-		spdlog::info(L"触发窗口大小调整事件。");
+		spdlog::info(L"Window Resize occurred.");
 	}
 
 	void Application::onWindowMove(const int x, const int y)
 	{
 		//@TODO 接入窗口移动事件
-		spdlog::info(L"触发窗口移动事件。");
+		spdlog::info(L"Window Move occurred.");
 	}
 
 	void Application::onWindowFocus()
 	{
 		//@TODO 接入窗口获得焦点事件
-		spdlog::info(L"触发窗口获得焦点事件。");
+		spdlog::info(L"Window Focus occurred.");
 	}
 
 	void Application::onWindowLostFocus()
 	{
 		//@TODO 接入窗口失去焦点事件
-		spdlog::info(L"触发窗口失去焦点事件。");
+		spdlog::info(L"Window Lost Focus occurred.");
 	}
 
 	UINT Application::getFrameRate()

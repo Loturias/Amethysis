@@ -4,6 +4,7 @@
 #include "SharedHeaders.hpp"
 #include <iostream>
 #include "Utility/Console/Console.hpp"
+#include "Core/AppFrame/AppFrame.hpp"
 
 int WINAPI WinMain(
 _In_ HINSTANCE hInstance,
@@ -13,7 +14,9 @@ _In_ int nCmdShow )
 {
 	Amethysis::Utility::Console::ConsoleManager::initConsole();
 
-	std::cout << "Press Any Key To Exit..." << std::endl;
-	std::cin.get();
+	Amethysis::Core::App::AppFrame appFrame(hInstance);
+
+	/*std::cout << "Press Any Key To Exit..." << std::endl;
+	std::cin.get();*/
 	return 0;
 }

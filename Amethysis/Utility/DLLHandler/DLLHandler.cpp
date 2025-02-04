@@ -1,6 +1,6 @@
 #include "DLLHandler.hpp"
 
-namespace LouRenderer
+namespace Amethysis::Utility
 {
 	DLLHandler::DLLHandler(const char* path)
 	{

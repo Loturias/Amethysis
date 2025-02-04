@@ -31,7 +31,7 @@ namespace Amethysis::Platform::Windows
 		WindowStatus m_Status = WindowStatus::NOT_INITIALIZED;
 		HINSTANCE m_hInstance = nullptr;
 		HWND m_hWnd = nullptr;
-		std::shared_ptr<IWindowEventListener> m_WindowListener = nullptr;
+		IWindowEventListener* m_WindowListener = nullptr;
 
 		long m_Width = 0;
 		long m_Height = 0;
@@ -62,7 +62,7 @@ namespace Amethysis::Platform::Windows
 		void setHWnd(const HWND hWnd) { m_hWnd = hWnd; }
 		[[nodiscard]] HWND getHWnd() const { return m_hWnd; }
 
-		void setListener(IWindowEventListener* listener) { m_WindowListener.reset(listener); }
-		[[nodiscard]] std::shared_ptr<IWindowEventListener> getListener() const { return m_WindowListener; }
+		void setListener(IWindowEventListener* listener) { m_WindowListener = listener; };
+		[[nodiscard]] IWindowEventListener* getListener() const { return m_WindowListener; }
 	};
 }
