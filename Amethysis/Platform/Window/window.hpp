@@ -48,8 +48,8 @@ namespace Amethysis::Platform::Windows
 
         virtual UINT getFrameRate() = 0;
 
-		int getWidth() const { return m_Width; }
-		int getHeight() const { return m_Height; }
+		[[nodiscard]] int getWidth() const { return m_Width; }
+		[[nodiscard]] int getHeight() const { return m_Height; }
 		void setWidth(const long width) { m_Width = width; }
 		void setHeight(const long height) { m_Height = height; }
 

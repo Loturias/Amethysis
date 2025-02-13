@@ -12,7 +12,7 @@ namespace Amethysis::Core::App {
 		m_App->setListener(dynamic_cast<IWindowEventListener*>(this));
 
 		// 加载DLL
-		m_DLLHandles.emplace_back(Utility::DLLHandler("lua54.dll"));
+		m_DLLHandles.emplace_back("lua54.dll");
 
 		onCreate();
 
