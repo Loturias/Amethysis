@@ -16,7 +16,7 @@ _In_ int nCmdShow )
 
 	Amethysis::Core::App::AppFrame appFrame(hInstance);
 
-	/*std::cout << "Press Any Key To Exit..." << std::endl;
-	std::cin.get();*/
+	std::cout << "Press Any Key To Exit..." << std::endl;
+	std::cin.get();
 	return 0;
 }

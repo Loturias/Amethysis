@@ -4,7 +4,6 @@
 
 #pragma once
 #include "../Application/Application.hpp"
-#include "../../Platform/Window/window.hpp"
 #include "../../Utility/Console/Console.hpp"
 #include "../../Utility/FrameRateController/FrameRateController.hpp"
 #include "../../Utility/DLLHandler/DLLHandler.hpp"
@@ -15,8 +14,9 @@ namespace Amethysis::Core::App
 {
 	struct AppFrame final
 		: Platform::Windows::IWindowEventListener
+		, Platform::Lua::ILuaEngineListener
 	{
-		AppFrame(HINSTANCE hInstance);
+		explicit AppFrame(HINSTANCE hInstance);
 		~AppFrame() override = default;
 		AppFrame(const AppFrame&) = delete;
 		AppFrame& operator=(const AppFrame&) = delete;
@@ -35,8 +35,14 @@ namespace Amethysis::Core::App
 		Utility::FrameRate::FrameRateController m_FrameRateController{};
 
 	public:
+		// IWindow
 		void onWindowCreate() override;
 		void onWindowUpdate() override;
 		void onWindowDestroy() override;
+
+		// ILuaEngine
+
+		void onLuaEngineCreate() override;
+		void onLuaEngineDestroy() override;
 	};
 }

@@ -2,6 +2,9 @@ set(AMETHYSIS_SRC ${AMETHYSIS_SRC}
 	${CMAKE_CURRENT_SOURCE_DIR}/Window/window.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Window/window.cpp
 
+	${CMAKE_CURRENT_SOURCE_DIR}/Lua/LuaEngine.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Lua/LuaEngine.cpp
+
 	PARENT_SCOPE # 这个关键字将变量的修改传递回父作用域
 )
 

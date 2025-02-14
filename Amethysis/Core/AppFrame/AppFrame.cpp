@@ -35,6 +35,8 @@ namespace Amethysis::Core::App {
 
 		onWindowCreate();
 
+		onLuaEngineCreate();
+
 		m_App->isRunning = true;
 	}
 
@@ -50,9 +52,13 @@ namespace Amethysis::Core::App {
 
 	void AppFrame::onDestroy()
 	{
-		spdlog::info("Start destroy App Framework");
+		spdlog::info("Start destroying App Framework...");
 
 		onWindowDestroy();
+
+		onLuaEngineDestroy();
+
+		spdlog::info("App framework destroyed.");
 	}
 
 }

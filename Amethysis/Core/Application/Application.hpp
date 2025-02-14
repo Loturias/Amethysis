@@ -4,10 +4,12 @@
 #pragma once
 #include "../../SharedHeaders.hpp"
 #include "../../Platform/Window/window.hpp"
+#include "../../Platform/Lua/LuaEngine.hpp"
 
 namespace Amethysis::Core::App {
 	struct Application final
 		: Platform::Windows::IWindow
+		, Platform::Lua::ILuaEngine
 	{
 		///@brief 获取全局静态实例
 		static Application& getInstance()
@@ -37,6 +39,11 @@ namespace Amethysis::Core::App {
 		void onWindowFocus() override;
 		void onWindowLostFocus() override;
 		UINT getFrameRate() override;
+
+		// ILuaEngine接口
+
+		void onLuaEngineCreate() override;
+		void onLuaEngineDestroy() override;
 	private:
 		///@brief 构造函数，禁止外部实例化，仅允许单例模式
 		Application() = default;
