@@ -30,12 +30,16 @@ namespace Amethysis::Core::App {
 	void AppFrame::onCreate()
 	{
 		spdlog::info("Creating Application Framework...");
+
+		m_App->thread_pool.OnInit(4);
+
 		// 初始化帧率控制器
 		m_FrameRateController.Init(60);
 
-		onWindowCreate();
+		onWindowCreate(); // 创建窗口，WinAPI要求窗口消息处理必须由创建窗口的线程执行，否则无法更新，所以这里在主线程中调用。
 
-		onLuaEngineCreate();
+		const auto LuaRes = m_App->thread_pool.SubmitTask(&AppFrame::onLuaEngineCreate,this);
+		LuaRes.wait();
 
 		m_App->isRunning = true;
 	}
@@ -57,6 +61,8 @@ namespace Amethysis::Core::App {
 		onWindowDestroy();
 
 		onLuaEngineDestroy();
+
+		m_App->thread_pool.OnDestroy();
 
 		spdlog::info("App framework destroyed.");
 	}

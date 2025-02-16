@@ -70,7 +70,7 @@ namespace Amethysis::Core::App {
 	void Application::onWindowUpdate()
 	{
 		MSG msg{};
-		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+		while (PeekMessage(&msg, getHWnd(), 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);

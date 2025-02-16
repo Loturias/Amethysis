@@ -5,6 +5,7 @@
 #include "../../SharedHeaders.hpp"
 #include "../../Platform/Window/window.hpp"
 #include "../../Platform/Lua/LuaEngine.hpp"
+#include "../../Platform/Thread/ThreadPool.hpp"
 
 namespace Amethysis::Core::App {
 	struct Application final
@@ -23,10 +24,16 @@ namespace Amethysis::Core::App {
 		Application(const Application&) = delete;
 		Application& operator=(const Application&) = delete;
 
+		// 核心成员
+
+		// 对象池
+		Platform::Thread::ThreadPool thread_pool;
+
 		///@brief 帧计数器
 		ULONG FrameCounter = 0;
 
 		bool isRunning = false;
+
 		[[nodiscard]] bool IsRunning() const { return isRunning; }
 
 		// IWindow接口
