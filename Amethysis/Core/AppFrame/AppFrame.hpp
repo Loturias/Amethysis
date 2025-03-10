@@ -50,7 +50,6 @@ namespace Amethysis::Core::App
 
 		Application* m_App = nullptr;
 		Utility::FrameRate::FrameSyncer m_FrameSyncer{};
-		// Utility::FrameRate::FrameRateController m_FrameRateController{};
 
 	public:
 		// Listener Callback

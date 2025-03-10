@@ -27,12 +27,6 @@ namespace Amethysis::Core::App {
 			m_MainLoopCV.wait(lock, [this] { return !m_App->IsRunning(); });
 		}
 
-		// 旧的帧同步的主循环方案
-		/*while (m_App->IsRunning())
-		{
-			onUpdate();
-		}*/
-
 		onDestroy();
 	}
 
@@ -43,8 +37,6 @@ namespace Amethysis::Core::App {
 		m_App->thread_pool.OnInit(4);
 
 		m_FrameSyncer.Init();
-		// 初始化帧率控制器
-		// m_FrameRateController.Init(60);
 
 		const auto LuaRes = m_App->thread_pool.SubmitTask(&Application::onLuaEngineCreate, m_App);
 		LuaRes.wait();
