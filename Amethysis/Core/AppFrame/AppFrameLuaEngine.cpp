@@ -7,11 +7,12 @@
 namespace Amethysis::Core::App {
 	void AppFrame::onLuaEngineCreate()
 	{
-		m_App->onLuaEngineCreate();
+		spdlog::info("AppFrame LuaEngine Listener Callback:onLuaEngineCreate.");
 	}
 
 	void AppFrame::onLuaEngineDestroy()
 	{
+		spdlog::info("AppFrame LuaEngine Listener Callback:onLuaEngineDestroy.");
 		m_App->onLuaEngineDestroy();
 	}
 }

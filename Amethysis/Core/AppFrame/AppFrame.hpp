@@ -24,6 +24,23 @@ namespace Amethysis::Core::App
 		std::vector<Utility::DLLHandler> m_DLLHandles{}; // DLL句柄
 
 		void onCreate();
+
+		// 程序主循环控制
+
+		///@brief 用于挂起启动线程的互斥锁
+		std::mutex m_MainLoopMutex{};
+		///@brief 用于挂起启动线程的条件变量
+		std::condition_variable m_MainLoopCV{};
+
+		/// @brief 向线程池发射主循环任务
+		void DispatchMainLoop();
+
+		void LogicLoop();
+		void RenderLoop();
+
+		void onLogicUpdate();
+		void onRenderUpdate();
+
 		void onUpdate();
 		void onDestroy();
 
@@ -32,10 +49,14 @@ namespace Amethysis::Core::App
 		HWND m_hWnd = nullptr;
 
 		Application* m_App = nullptr;
-		Utility::FrameRate::FrameRateController m_FrameRateController{};
+		Utility::FrameRate::FrameSyncer m_FrameSyncer{};
+		// Utility::FrameRate::FrameRateController m_FrameRateController{};
 
 	public:
+		// Listener Callback
+
 		// IWindow
+
 		void onWindowCreate() override;
 		void onWindowUpdate() override;
 		void onWindowDestroy() override;

@@ -39,6 +39,9 @@ namespace Amethysis::Core::App {
 		// IWindow接口
 
 		void onWindowCreate(HINSTANCE hInstance) override;
+
+		// 窗口更新族
+
 		void onWindowUpdate() override;
 		void onWindowDestroy() override;
 		void onWindowResize(int width, int height) override;

@@ -5,25 +5,28 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	static auto& s_hInstance = Amethysis::Core::App::Application::getInstance();
 	switch (message)
 	{
 	case WM_CREATE:
 		break;
 	case WM_DESTROY:
-		Amethysis::Core::App::Application::getInstance().isRunning = false;
+		s_hInstance.isRunning = false;
+		// 通知启动线程唤起
+		s_hInstance.getListener()->onWindowDestroy();
 		PostQuitMessage(0);
 		break;
 	case WM_SIZE: // NOLINT(*-branch-clone)
-		Amethysis::Core::App::Application::getInstance().onWindowResize(LOWORD(lParam), HIWORD(lParam));
+		s_hInstance.onWindowResize(LOWORD(lParam), HIWORD(lParam));
 		break;
 	case WM_MOVE:
-		Amethysis::Core::App::Application::getInstance().onWindowMove(LOWORD(lParam), HIWORD(lParam));
+		s_hInstance.onWindowMove(LOWORD(lParam), HIWORD(lParam));
 		break;
 	case WM_SETFOCUS:
-		Amethysis::Core::App::Application::getInstance().onWindowFocus();
+		s_hInstance.onWindowFocus();
 		break;
 	case WM_KILLFOCUS:
-		Amethysis::Core::App::Application::getInstance().onWindowLostFocus();
+		s_hInstance.onWindowLostFocus();
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
@@ -48,8 +51,8 @@ namespace Amethysis::Core::App {
 			WS_OVERLAPPEDWINDOW, // 普通的带标题栏和边框的窗口
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
-			1920,
-			1080,
+			1280,
+			760,
 			nullptr,
 			nullptr,
 			wc.hInstance,
@@ -60,8 +63,8 @@ namespace Amethysis::Core::App {
 
 		setHInstance(hInstance);
 		setHWnd(hWnd);
-		setWidth(1920);
-		setHeight(1080);
+		setWidth(1280);
+		setHeight(760);
 
 		setStatus(Platform::Windows::WindowStatus::CREATED);
 		this->isRunning = true;
