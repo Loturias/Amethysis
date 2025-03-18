@@ -2,7 +2,10 @@
 // Created by Loturias on 25-3-18.
 #pragma once
 
-struct RenderPass
+namespace Amethysis::Platform::Render
 {
+    struct RenderPass
+    {
 
-};
+    };
+}
