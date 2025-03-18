@@ -8,6 +8,13 @@ set(AMETHYSIS_SRC ${AMETHYSIS_SRC}
 	${CMAKE_CURRENT_SOURCE_DIR}/Thread/ThreadPool.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Thread/ThreadPool.cpp
 
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/RenderCore/RenderCycle/RenderCycle.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/RenderCore/RenderGraph/RenderGraph.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/RenderCore/RenderPass/RenderPass.hpp
+
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/ResourcePool.hpp
+
+
 	PARENT_SCOPE # 这个关键字将变量的修改传递回父作用域
 )
 
