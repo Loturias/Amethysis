@@ -13,6 +13,7 @@ set(AMETHYSIS_SRC ${AMETHYSIS_SRC}
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/RenderCore/RenderPass/RenderPass.hpp
 
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/ResourcePool.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/Resource.hpp
 
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/RenderTarget/RenderTarget.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/RenderTarget/RenderTargetPool.hpp
