@@ -13,9 +13,14 @@ set(AMETHYSIS_SRC ${AMETHYSIS_SRC}
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/RenderCore/RenderPass/RenderPass.hpp
 
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/ResourcePool.hpp
+
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/RenderTarget/RenderTarget.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/RenderTarget/RenderTargetPool.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/RenderTarget/RenderTargetPool.cpp
+
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/Shader/Shader.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/Shader/ShaderPool.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Render/Resources/Shader/ShaderPool.cpp
 
 	PARENT_SCOPE # 这个关键字将变量的修改传递回父作用域
 )
