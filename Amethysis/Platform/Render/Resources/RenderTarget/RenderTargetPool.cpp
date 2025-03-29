@@ -4,28 +4,26 @@
 #include "RenderTargetPool.hpp"
 
 namespace Amethysis::Platform::Render {
-	void RenderTargetPool::Initialize()
-	{
-
+	template<RenderTargetType RTType>
+	void RenderTargetPool<RTType>::Initialize() {
 	}
 
-	void RenderTargetPool::Shutdown()
-	{
-
+	template<RenderTargetType RTType>
+	void RenderTargetPool<RTType>::Shutdown() {
 	}
 
-	auto RenderTargetPool::Create(const std::string& name) -> RenderTarget*
-	{
+	template<RenderTargetType RTType>
+	RenderTarget* RenderTargetPool<RTType>::Create(const std::string& name) {
 		return nullptr;
 	}
 
-	auto RenderTargetPool::Get(const std::string& name) -> RenderTarget*
-	{
+	template<RenderTargetType RTType>
+	RenderTarget* RenderTargetPool<RTType>::Get(const std::string& name) {
 		return nullptr;
 	}
 
-	auto RenderTargetPool::Destroy(const std::string& name) -> bool
-	{
+	template<RenderTargetType RTType>
+	bool RenderTargetPool<RTType>::Destroy(const std::string& name) {
 		return false;
 	}
 

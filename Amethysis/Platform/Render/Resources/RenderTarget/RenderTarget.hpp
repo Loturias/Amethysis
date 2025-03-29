@@ -4,7 +4,9 @@
 
 namespace Amethysis::Platform::Render
 {
+	///@brief 渲染目标对象
 	struct RenderTarget
 	{
+
 	};
 }

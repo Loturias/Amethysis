@@ -5,6 +5,13 @@
 #include "../ResourcePool.hpp"
 namespace Amethysis::Platform::Render
 {
+	enum class RenderTargetType
+	{
+		RT2D,
+		RT3D
+	};
+
+	template<RenderTargetType RTType>
 	class RenderTargetPool final : public GResourcePool<RenderTarget>
 	{
 		void Initialize() override;
@@ -14,4 +21,7 @@ namespace Amethysis::Platform::Render
 		RenderTarget* Get(const std::string& name) override;
 		bool Destroy(const std::string& name) override;
 	};
+
+	using RenderTarget2DPool = RenderTargetPool<RenderTargetType::RT2D>;
+	using RenderTarget3DPool = RenderTargetPool<RenderTargetType::RT3D>;
 }
